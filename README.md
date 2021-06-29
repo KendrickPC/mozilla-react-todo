@@ -6,4 +6,9 @@ https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_Jav
 ##### Componentizing our React app
 https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_components
 
-Tasks as data
+##### React interactivity: Events and state
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_events_state
+
+##### React interactivity: Editing, filtering, conditional rendering
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_filtering_conditional_rendering
+
