@@ -4,9 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const DATA = [
+  { id: "todo-0", name: "Mongo DB", completed: true },
+  { id: "todo-1", name: "Express Node.js web application framework", completed: false },
+  { id: "todo-2", name: "Node JS", completed: false },
+  { id: "todo-3", name: "React JS", completed: false }
+];
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App tasks={DATA} />
   </React.StrictMode>,
   document.getElementById('root')
 );
