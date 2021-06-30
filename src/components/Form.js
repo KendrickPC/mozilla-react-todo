@@ -28,6 +28,7 @@ export function Form(props) {
         autoComplete="off"
         value={name}
         onChange={handleChange}
+        
       />
       <button type="submit" className="btn btn__primary btn__lg">
         Add
