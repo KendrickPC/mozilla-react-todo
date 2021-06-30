@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Todo }  from './components/Todo';
 import { Form }  from './components/Form';
 import { FilterButton }  from './components/FilterButton';
 import { nanoid } from 'nanoid';
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  })
+  return ref.current;
+}
 
 const FILTER_MAP = {
   All: () => true,
@@ -15,6 +23,13 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 export function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter]= useState('All');
+
+  const prevTaskLength = usePrevious(tasks.length);
+  useEffect(() => {
+    if (tasks.length - prevTaskLength === -1) {
+      listHeadingRef.current.focus();
+    }
+  }, [tasks.length, prevTaskLength])
 
   function addTask(name) {
     const newTask = {id: "todo-" + nanoid(), name: name, completed: false};
@@ -72,6 +87,8 @@ export function App(props) {
   const taskNouns = taskList.length !== 1 ? 'tasks' : 'task';
   const headingTask = `${taskList.length} + ${taskNouns} remaining`;
 
+  const listHeadingRef = useRef(null);
+
   return (
     <div className="todoapp stack-large">
       <h1>MERN Tasks</h1>
@@ -79,7 +96,7 @@ export function App(props) {
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
-      <h2 id="list-heading">
+      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef} >
         {headingTask}
       </h2>
       <ul
